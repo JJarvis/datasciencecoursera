@@ -1,3 +1,5 @@
+## pip install -Iv https://pypi.python.org/packages/source/i/ipython/ipython-2.3.1.zip#md5=0affd51ad4a620fe304018094def85cc
+
 import lxml, html, re, urllib
 
 def get_match_events(url):
