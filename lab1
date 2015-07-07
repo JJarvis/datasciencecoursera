@@ -1130,22 +1130,34 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 56,
    "metadata": {
     "collapsed": false
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "mapResult: FunctionalWrapper([0, 5, 10, 15, 20, 25, 30, 35, 40, 45])\n",
+      "\n",
+      "filterResult: FunctionalWrapper([0, 2, 4, 6, 8])\n",
+      "\n",
+      "reduceResult: 45\n"
+     ]
+    }
+   ],
    "source": [
     "# TODO: Replace <FILL IN> with appropriate code\n",
     "dataset = FunctionalWrapper(range(10))\n",
     "\n",
     "# Multiply each element by 5\n",
-    "mapResult = dataset.map(<FILL IN>)\n",
+    "mapResult = dataset.map(lambda x: x * 5)\n",
     "# Keep the even elements\n",
     "# Note that \"x % 2\" evaluates to the remainder of x divided by 2\n",
-    "filterResult = dataset.filter(<FILL IN>)\n",
+    "filterResult = dataset.filter(lambda x: (x % 2 == 0))\n",
     "# Sum the elements\n",
-    "reduceResult = dataset.reduce(<FILL IN>)\n",
+    "reduceResult = dataset.reduce(lambda x,y : x + y)\n",
     "\n",
     "print 'mapResult: {0}'.format(mapResult)\n",
     "print '\\nfilterResult: {0}'.format(filterResult)\n",
@@ -1154,11 +1166,21 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 57,
    "metadata": {
     "collapsed": false
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1 test passed.\n",
+      "1 test passed.\n",
+      "1 test passed.\n"
+     ]
+    }
+   ],
    "source": [
     "# TEST Functional programming (4e)\n",
     "Test.assertEquals(mapResult, FunctionalWrapper([0, 5, 10, 15, 20, 25, 30, 35, 40, 45]),\n",
@@ -1180,11 +1202,22 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 58,
    "metadata": {
     "collapsed": false
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "39916800"
+      ]
+     },
+     "execution_count": 58,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "# Example of a mult-line expression statement\n",
     "# Note that placing parentheses around the expression allow it to exist on multiple lines without\n",
@@ -1196,25 +1229,44 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 60,
    "metadata": {
     "collapsed": false
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "100\n"
+     ]
+    }
+   ],
    "source": [
     "# TODO: Replace <FILL IN> with appropriate code\n",
     "# Multiply the elements in dataset by five, keep just the even values, and sum those values\n",
-    "finalSum = <FILL IN>\n",
+    "finalSum = (dataset\n",
+    "            .map(lambda x: x* 5)\n",
+    "            .filter(lambda x: (x % 2 == 0))\n",
+    "            .reduce(lambda x,y: x + y))\n",
     "print finalSum"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 61,
    "metadata": {
     "collapsed": false
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1 test passed.\n"
+     ]
+    }
+   ],
    "source": [
     "# TEST Composability (4f)\n",
     "Test.assertEquals(finalSum, 100, 'incorrect value for finalSum')"
@@ -1238,11 +1290,33 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 62,
    "metadata": {
     "collapsed": false
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "\n",
+       "        <iframe\n",
+       "            width=\"600\"\n",
+       "            height=\"350\"\n",
+       "            src=\"http://labs.criteo.com/downloads/2014-kaggle-display-advertising-challenge-dataset/\"\n",
+       "            frameborder=\"0\"\n",
+       "            allowfullscreen\n",
+       "        ></iframe>\n",
+       "        "
+      ],
+      "text/plain": [
+       "<IPython.lib.display.IFrame at 0xb0e7628c>"
+      ]
+     },
+     "execution_count": 62,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "# Run this code to view Criteo's agreement\n",
     "# Note that some ad blocker software will prevent this IFrame from loading.\n",
@@ -1255,11 +1329,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 64,
    "metadata": {
     "collapsed": false
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Successfully extracted: dac_sample.txt\n",
+      "tar.gz file was already available.\n"
+     ]
+    }
+   ],
    "source": [
     "# TODO: Replace <FILL IN> with appropriate code\n",
     "# Just replace <FILL IN> with the url for dac_sample.tar.gz\n",
@@ -1270,7 +1353,7 @@
     "import urlparse\n",
     "\n",
     "# Paste url, url should end with: dac_sample.tar.gz\n",
-    "url = '<FILL IN>'\n",
+    "url = 'http://labs.criteo.com/wp-content/uploads/2015/04/dac_sample.tar.gz'\n",
     "\n",
     "url = url.strip()\n",
     "baseDir = os.path.join('data')\n",
@@ -1320,11 +1403,21 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 65,
    "metadata": {
     "collapsed": false
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[u'0,1,1,5,0,1382,4,15,2,181,1,2,,2,68fd1e64,80e26c9b,fb936136,7b4723c4,25c83c98,7e0ccccf,de7995b8,1f89b562,a73ee510,a8cd5504,b2cb9c98,37c9c164,2824a5f6,1adce6ef,8ba8b39a,891b62e7,e5ba7672,f54016b9,21ddcdc9,b1252a9d,07b5194c,,3a171ecb,c5c50484,e8b83407,9727dd16']\n",
+      "100000\n",
+      "Criteo data loaded successfully!\n"
+     ]
+    }
+   ],
    "source": [
     "import os.path\n",
     "baseDir = os.path.join('data')\n",
@@ -1344,6 +1437,15 @@
     "if rawDataCount == 100000:\n",
     "    print 'Criteo data loaded successfully!'"
    ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {
